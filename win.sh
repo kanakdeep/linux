@@ -13,7 +13,7 @@ read -p "choose ngrok region: " CRP
 clear
 echo "Wait..."
 echo "Starting Windows"
-qemu-system-x86_64 -hda w2019.img -m 8G -smp cores=4 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic &>/dev/null &/ 
+qemu-system-x86_64 -hda w2019.img -m 8G -smp cores=4 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic &>/dev/null &
 clear
 echo RDP Address:
 curl --silent --show-error http://127.0.0.1:4242/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
